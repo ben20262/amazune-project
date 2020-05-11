@@ -13,3 +13,7 @@ Item.create(name: 'Shirt', content: 'Only the finest felts were used in this mas
 UserItem.create(user_id: 1, item_id: 2, quantity: 1)
 UserItem.create(user_id: 2, item_id: 3, quantity: 2)
 UserItem.create(user_id: 3, item_id: 1, quantity: 3)
+
+User.all[0].update(store_id: 1)
+User.all[1].update(store_id: 2)
+User.all[2].update(store_id: 3)
