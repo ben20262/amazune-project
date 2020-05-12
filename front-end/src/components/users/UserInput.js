@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-class UserInput {
+class UserInput extends Component {
 
 	state = {
 		name: ''
@@ -26,7 +26,7 @@ class UserInput {
 			<div className='UserInput'>
 				<select name='users' onSelect={this.handleSelect}>
 					<option value=''></option>
-					{this.props.users.map(user => <option value={user.id}>{user.name}</option>)}
+					{this.props.users.all.map(user => <option key={user.id} value={user.id}>{user.name}</option>)}
 				</select>
 				<form onSubmit={this.handleSubmit} >
 					<input type='text' name='name' onChange={this.handleChange} value={this.state.name} />
@@ -36,3 +36,5 @@ class UserInput {
 		)
 	}
 }
+
+export default UserInput
