@@ -1,10 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { connect } from 'react-redux'
 import UsersContainer from './containers/UsersContainer'
 import ItemsContainer from './containers/ItemsContainer'
-import StoresContainer from './containers/StoreContainer'
 
 function App() {
 	return (
@@ -18,4 +14,4 @@ function App() {
 	);
 }
 
-export default connect(null, mapDispatchToProps)(App)
+export default App
