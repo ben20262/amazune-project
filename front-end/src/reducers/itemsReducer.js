@@ -11,6 +11,11 @@ export default function rootReducer(state = {all: [], loading: false}, action) {
 				all: action.items,
 				loading: false
 			}
+		case 'CREATE_ITEM':
+			return {
+				...state,
+				all: [...state.all, action.item]
+			}
 		case 'DELETE_ITEM':
 			return state
 		default:
