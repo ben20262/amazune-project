@@ -5,3 +5,5 @@ const User = props => {
 		<h4>{props.user.name}</h4>
 	)
 }
+
+export default User
