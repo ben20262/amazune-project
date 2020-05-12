@@ -1,4 +1,4 @@
-const apiURL = 'http://localhost:3000'
+const apiURL = 'http://localhost:3001'
 
 const configObj = (action, info) => {
 	return {
@@ -43,14 +43,14 @@ export const fetchUsers = () => {
 		dispatch({type: 'LOADING_USERS'})
 		fetch(`${apiURL}/users`)
 		.then(resp => resp.json())
-		.then(users => dispatch({ type: 'ADD_USERS', users }))
+		.then(users => console.log(users))
 	}
 }
 
 export const loginUser = userId => {
 	return dispatch => {
 		dispatch({type: 'LOADING_USER', userId})
-		fetch(`${apiURL}/user/${action.userId}`)
+		fetch(`${apiURL}/user/${userId}`)
 		.then(resp => resp.json())
 		.then(user => dispatch({ type: 'LOGIN_USER', user }))
 	}
