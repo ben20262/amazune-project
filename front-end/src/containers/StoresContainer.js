@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchStores } from './actions/index'
+import { fetchStores } from '../actions/index'
 
 class StoresContainer extends Component {
 

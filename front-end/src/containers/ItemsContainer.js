@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchItems } from './actions/index'
+import { fetchItems } from '../actions/index'
 
-export default class ItemsContainer extends Component {
+class ItemsContainer extends Component {
 
 	componentDidMount() {
 		this.props.fetchItems()

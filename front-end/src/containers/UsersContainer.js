@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import User from '../components/users/User'
 import UserInput from '../components/users/UserInput'
-import { fetchUsers, loginUser, addToCart } from './actions/index'
+import { fetchUsers, loginUser, addToCart } from '../actions/index'
 
 class UsersContainer extends Component {
 
@@ -11,8 +11,7 @@ class UsersContainer extends Component {
 	}
 
 	render() {
-		
-		if (this.props.users.current !== {}) {
+		if (this.props.users.current.name !== undefined) {
 			return (
 				<User user={this.props.users.current} />
 			)
