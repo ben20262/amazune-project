@@ -1,12 +1,14 @@
 import React from 'react'
 
-export const Item = props => {
+const Item = props => {
 	return (
-		<div id={'item-', item.id}>
-			<h3>{item.name}</h3>
-			<h4>{item.store.name}</h4>
-			<sup>{item.price}</sup>
-			<p>{item.content}</p>
+		<div id={'item-' + props.item.id}>
+			<h3>{props.item.name}</h3>
+			<h4>{props.item.store.name}</h4>
+			<sup>{props.item.price}</sup>
+			<p>{props.item.content}</p>
 		</div>
 	)
 }
+
+export default Item
