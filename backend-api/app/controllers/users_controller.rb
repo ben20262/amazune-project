@@ -15,11 +15,12 @@ class UsersController < ApplicationController
 	end
 
 	def update
-		user = User.find_by(id: params[:user_id])
-		item = Item.find_by(id: params[:id])
+		user = User.find_by(id: params[:id])
+		item = Item.find_by(id: params[:itemId])
 
-		user.items << item
-		render json: {type: 'SUCCESS'}
+		user.items << item if !user.items.include?(item)
+		render json: user, include: :items
+			
 	end
 
 end
