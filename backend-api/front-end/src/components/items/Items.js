@@ -4,7 +4,7 @@ import Item from './Item'
 const Items = props => {
 	return (
 		<div className='Items-Component' >
-			{props.items.all.map(item => <Item key={item.id} item={item} />)}
+			{props.items.all.map(item => <Item key={item.id} item={item} addToCart={props.addToCart} currentUser={props.currentUser} />)}
 		</div>
 	)
 }
