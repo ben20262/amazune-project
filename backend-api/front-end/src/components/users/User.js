@@ -2,7 +2,10 @@ import React from 'react'
 
 const User = props => {
 	return (
-		<h4>{props.user.name}</h4>
+		<div>
+			<h4>{props.user.name}</h4>
+			<p>{props.user.items.length} Items In Cart</p>
+		</div>
 	)
 }
 
