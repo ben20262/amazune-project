@@ -1,7 +1,7 @@
-export default function usersReducer(state = {all: [], current: {}, loading: false}, action) {
+export default function usersReducer(state = {all: [], current: {items: []}, loading: false}, action) {
 	let item
+	console.log(state, action)
 	switch (action.type) {
-		
 		case 'LOADING_USERS':
 			return {
 				...state,
@@ -12,13 +12,15 @@ export default function usersReducer(state = {all: [], current: {}, loading: fal
 			return {
 				...state,
 				all: action.users,
+				current: state.current,
 				loading: false
 			}
 		case 'CREATE_USER':
 			item = {
 				name: action.user.name,
 				id: action.user.id,
-				storeId: action.user.storeId
+				storeId: action.user.storeId,
+				items: []
 			}
 			return {
 				...state,
@@ -32,7 +34,10 @@ export default function usersReducer(state = {all: [], current: {}, loading: fal
 				current: action.user
 			}
 		case 'CART_ITEM':
-			return state
+			return {
+				...state,
+				current: action.user
+			}
 		default:
 			return state
 	}
