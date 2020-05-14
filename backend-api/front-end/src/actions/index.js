@@ -38,19 +38,28 @@ export const fetchStores = () => {
 	}
 }
 
+export const addUser = (name) => {
+	return dispatch => {
+		dispatch({type: 'LOADING_USERS'})
+		fetch(`${apiURL}/users`, configObj('POST', {name}))
+		.then(resp => resp.json())
+		.then(user => dispatch({ type: 'CREATE_USER', user }))
+	}
+}
+
 export const fetchUsers = () => {
 	return dispatch => {
 		dispatch({type: 'LOADING_USERS'})
 		fetch(`${apiURL}/users`)
 		.then(resp => resp.json())
-		.then(users => console.log(users))
+		.then(users => dispatch({ type: 'ADD_USERS', users }))
 	}
 }
 
 export const loginUser = userId => {
 	return dispatch => {
 		dispatch({type: 'LOADING_USER', userId})
-		fetch(`${apiURL}/user/${userId}`)
+		fetch(`${apiURL}/users/${userId}`)
 		.then(resp => resp.json())
 		.then(user => dispatch({ type: 'LOGIN_USER', user }))
 	}
