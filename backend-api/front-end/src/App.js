@@ -1,6 +1,7 @@
 import React from 'react';
 import UsersContainer from './containers/UsersContainer'
 import ItemsContainer from './containers/ItemsContainer'
+import StoresContainer from './containers/StoresContainer'
 
 function App() {
 	return (
@@ -10,6 +11,7 @@ function App() {
 				<UsersContainer />
 			</header>
 			<ItemsContainer />
+			<StoresContainer />
 		</div>
 	);
 }
