@@ -15,6 +15,9 @@ class UserInput extends Component {
 	handleSubmit = event => {
 		event.preventDefault()
 		this.props.addUser(this.state.name)
+		this.setState({
+			name: ''
+		})
 	}
 
 	handleSelect = event => {
@@ -24,8 +27,8 @@ class UserInput extends Component {
 	render() {
 		return (
 			<div className='UserInput'>
-				<select name='users' onSelect={this.handleSelect}>
-					<option value=''></option>
+				<select name='users' onChange={this.handleSelect}>
+					<option value='' ></option>
 					{this.props.users.all.map(user => <option key={user.id} value={user.id}>{user.name}</option>)}
 				</select>
 				<form onSubmit={this.handleSubmit} >
