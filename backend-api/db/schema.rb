@@ -17,8 +17,6 @@ ActiveRecord::Schema.define(version: 2020_05_11_173455) do
     t.text "content"
     t.float "price"
     t.integer "store_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.index ["store_id"], name: "index_items_on_store_id"
   end
 
@@ -27,8 +25,6 @@ ActiveRecord::Schema.define(version: 2020_05_11_173455) do
     t.text "content"
     t.string "image"
     t.integer "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_stores_on_user_id"
   end
 
@@ -36,8 +32,6 @@ ActiveRecord::Schema.define(version: 2020_05_11_173455) do
     t.integer "user_id", null: false
     t.integer "item_id", null: false
     t.integer "quantity"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.index ["item_id"], name: "index_user_items_on_item_id"
     t.index ["user_id"], name: "index_user_items_on_user_id"
   end
@@ -45,8 +39,6 @@ ActiveRecord::Schema.define(version: 2020_05_11_173455) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.integer "store_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.index ["store_id"], name: "index_users_on_store_id"
   end
 
