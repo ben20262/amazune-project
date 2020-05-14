@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchStores } from '../actions/index'
+import { fetchStores, addStore } from '../actions/index'
+import StoreInput from '../components/stores/StoreInput'
+import Stores from '../components/stores/Stores'
 
 class StoresContainer extends Component {
 
@@ -10,8 +12,10 @@ class StoresContainer extends Component {
 
 	render() {
 		return (
-			<div className='StoresContainer' >
-				
+			<div className='Stores-Container' >
+				<h2>Stores</h2>
+				<StoreInput addStore={this.props.addStore} currentUser={this.props.currentUser} />
+				<Stores stores={this.props.stores} />
 			</div>
 		)
 	}
@@ -19,13 +23,15 @@ class StoresContainer extends Component {
 
 const mapStateToProps = state => {
 	return {
-		stores: state.stores
+		stores: state.stores,
+		currentUser: state.users.current
 	}
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
-		fetchStores
+		fetchStores: () => dispatch(fetchStores()),
+		addStore: (store) => dispatch(addStore(store))
 	}
 }
 
