@@ -1,6 +1,7 @@
 export default function usersReducer(state = {all: [], current: {}, loading: false}, action) {
-
+	let item
 	switch (action.type) {
+		
 		case 'LOADING_USERS':
 			return {
 				...state,
@@ -11,6 +12,18 @@ export default function usersReducer(state = {all: [], current: {}, loading: fal
 			return {
 				...state,
 				all: action.users,
+				loading: false
+			}
+		case 'CREATE_USER':
+			item = {
+				name: action.user.name,
+				id: action.user.id,
+				storeId: action.user.storeId
+			}
+			return {
+				...state,
+				all: [...state.all, item],
+				current: item,
 				loading: false
 			}
 		case 'LOGIN_USER':
