@@ -11,6 +11,8 @@ const configObj = (action, info) => {
 	}
 }
 
+// ITEMS
+
 export const fetchItems = () => {
 	return dispatch => {
 		dispatch({type: 'LOADING_ITEMS'})
@@ -20,14 +22,16 @@ export const fetchItems = () => {
 	}
 }
 
-export const addItem = (name, content, price, storeId) => {
+export const addItem = (name, content, price, store_id) => {
 	return dispatch => {
-		fetch(`${apiURL}/stores/${storeId}/items`, configObj('POST', { name, content, price }))
+		dispatch({type: 'LOADING_ITEMS'})
+		fetch(`${apiURL}/stores/${store_id}/items`, configObj('POST', { name, content, price }))
 		.then(resp => resp.json())
-		.then(item => dispatch({ type: 'CREATE_ITEM', item }))
+		.then(item => console.log(item))
 	}
-
 }
+
+// STORES
 
 export const fetchStores = () => {
 	return dispatch => {
@@ -37,6 +41,17 @@ export const fetchStores = () => {
 		.then(stores => dispatch({ type: 'ADD_STORES', stores }))
 	}
 }
+
+export const addStore = newStore => {
+	return dispatch => {
+		dispatch({type: 'LOADING_STORES'})
+		fetch(`${apiURL}/stores`, configObj('POST', newStore))
+		.then(resp => resp.json())
+		.then(store => dispatch({ type: 'CREATE_STORE', store }))
+	}
+}
+
+// USERS
 
 export const addUser = (name) => {
 	return dispatch => {
@@ -58,7 +73,7 @@ export const fetchUsers = () => {
 
 export const loginUser = userId => {
 	return dispatch => {
-		dispatch({type: 'LOADING_USER', userId})
+		dispatch({type: 'LOADING_USERS'})
 		fetch(`${apiURL}/users/${userId}`)
 		.then(resp => resp.json())
 		.then(user => dispatch({ type: 'LOGIN_USER', user }))
@@ -66,9 +81,11 @@ export const loginUser = userId => {
 }
 
 export const addToCart = (userId, itemId) => {
+	console.log(itemId)
 	return dispatch => {
-		fetch(`${apiURL}/user/${userId}/items/${itemId}`)
-		.then(resp => resp.json)
-		.then(item => dispatch({ type: 'CART_ITEM', item}))
+		dispatch({ type: 'LOADING_USERS'})
+		fetch(`${apiURL}/users/${userId}`, configObj('PATCH', { itemId }))
+		.then(resp => resp.json())
+		.then(user => dispatch({ type: 'CART_ITEM', user}))
 	}
 }
