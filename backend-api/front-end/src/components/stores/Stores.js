@@ -1,15 +1,13 @@
-import React, { Component } from 'react'
+import React from 'react'
+import Store from './Store'
 
-export default class Stores extends Component {
+const Stores = props => {
 
-	
-
-	render() {
-		return (
-			<div>
-				{props.stores.all.map(store => <Store store={store} key={store.id} />)}
-			</div>
-		)
-	}
+	return (
+		<div>
+			{props.stores.all.map(store => <Store store={store} key={store.id} />)}
+		</div>
+	)
 }
 
+export default Stores
