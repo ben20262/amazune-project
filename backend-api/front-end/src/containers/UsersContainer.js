@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import User from '../components/users/User'
 import UserInput from '../components/users/UserInput'
-import { fetchUsers, loginUser, addToCart } from '../actions/index'
+import { fetchUsers, loginUser, addToCart, addUser } from '../actions/index'
 
 class UsersContainer extends Component {
 
@@ -17,11 +17,10 @@ class UsersContainer extends Component {
 			)
 		} else {
 			return (
-				<UserInput users={this.props.users} loginUser={this.props.loginUser} />
+				<UserInput users={this.props.users} loginUser={this.props.loginUser} addUser={this.props.addUser} />
 			)
 		}
 	}
-
 }
 
 const mapStateToProps = state => {
@@ -32,9 +31,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		fetchUsers,
+		fetchUsers: () => dispatch(fetchUsers()),
 		loginUser: userId => dispatch(loginUser(userId)),
-		addToCart: (userId, itemId) => dispatch(addToCart(userId, itemId))
+		addToCart: (userId, itemId) => dispatch(addToCart(userId, itemId)),
+		addUser: (name) => dispatch(addUser(name))
 	}
 }
 
