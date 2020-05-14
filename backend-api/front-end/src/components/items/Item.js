@@ -7,6 +7,12 @@ const Item = props => {
 			<h4>{props.item.store.name}</h4>
 			<sup>{props.item.price}</sup>
 			<p>{props.item.content}</p>
+			<button
+			onClick={event => {
+				event.preventDefault()
+				props.addToCart(props.currentUser.id, props.item.id)
+			}}>
+			Add To Cart</button>
 		</div>
 	)
 }
