@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchItems } from '../actions/index'
+import Items from '../components/items/Items'
 
 class ItemsContainer extends Component {
 
@@ -11,7 +12,7 @@ class ItemsContainer extends Component {
 	render() {
 		return (
 			<div className='ItemsContainer'>
-				
+				<Items items={this.props.items} />
 			</div>
 		)
 	}
@@ -25,7 +26,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		fetchItems
+		fetchItems: () => dispatch(fetchItems())
 	}
 }
 
