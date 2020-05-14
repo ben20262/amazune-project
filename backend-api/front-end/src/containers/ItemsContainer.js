@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchItems } from '../actions/index'
+import { fetchItems, addItem, addToCart } from '../actions/index'
 import Items from '../components/items/Items'
+import ItemInput from '../components/items/ItemInput'
 
 class ItemsContainer extends Component {
 
@@ -11,8 +12,10 @@ class ItemsContainer extends Component {
 
 	render() {
 		return (
-			<div className='ItemsContainer'>
-				<Items items={this.props.items} />
+			<div className='Items-Container'>
+				<h3>Items</h3>
+				<ItemInput addItem={this.props.addItem} storeId={this.props.store_id} />
+				<Items items={this.props.items} currentUser={this.props.currentUser} addToCart={this.props.addToCart} />
 			</div>
 		)
 	}
@@ -20,13 +23,17 @@ class ItemsContainer extends Component {
 
 const mapStateToProps = state => {
 	return {
-		items: state.items
+		items: state.items,
+		currentUser: state.users.current,
+		store_id: 1
 	}
 }
 
 const mapDispatchToProps = dispatch => {
 	return {
-		fetchItems: () => dispatch(fetchItems())
+		fetchItems: () => dispatch(fetchItems()),
+		addItem: (name, content, price, store_id) => dispatch(addItem(name, content, price, store_id)),
+		addToCart: (userId, itemId) => dispatch(addToCart(userId, itemId))
 	}
 }
 
