@@ -6,7 +6,7 @@ import storesReducer from './storesReducer'
 const rootReducer = combineReducers({
 	users: usersReducer,
 	items: itemsReducer,
-	store: storesReducer
+	stores: storesReducer
 })
 
 export default rootReducer
