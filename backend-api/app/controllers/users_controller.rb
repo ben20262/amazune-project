@@ -16,11 +16,13 @@ class UsersController < ApplicationController
 
 	def update
 		user = User.find_by(id: params[:id])
-		item = Item.find_by(id: params[:itemId])
-
-		user.items << item if !user.items.include?(item)
-		render json: user, include: :items
-			
+		if params[:action] === 'ADD_ITEM'
+			item = Item.find_by(id: params[:itemId])
+			user.items << item if !user.items.include?(item)
+		elsif params[:action] === 'BUY_CART'
+			UserItems.where(user_id: user.id).destroy_all
+		end
+		render json: user, include: :items	
 	end
 
 end
