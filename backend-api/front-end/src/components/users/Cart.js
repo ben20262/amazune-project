@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import { buyCart } from '../actions/index'
+import { buyCart } from '../../actions/index'
+import { connect } from 'react-redux'
  
 class Cart extends Component {
     render() { 
         return (
             <div>
-				{}
+				<ul>
+					{this.props.items.map(item => <li key={item.id}>{item.name} ${item.price}</li>)}
+				</ul>
             </div>
         )
     }
@@ -24,4 +27,4 @@ const mapDispatchToProps = dispatch => {
 	}
 }
 
-export default Cart;
+export default connect(mapStateToProps, mapDispatchToProps)(Cart)

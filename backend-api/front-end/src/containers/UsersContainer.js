@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import User from '../components/users/User'
 import UserInput from '../components/users/UserInput'
+import Cart from '../components/users/Cart'
 import { fetchUsers, loginUser, addUser } from '../actions/index'
 
 class UsersContainer extends Component {
@@ -15,6 +16,7 @@ class UsersContainer extends Component {
 			return (
 				<div className='Users-Container'>
 					<User user={this.props.users.current} />
+					<Cart />
 				</div>
 			)
 		} else {

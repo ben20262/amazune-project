@@ -38,6 +38,12 @@ export default function usersReducer(state = {all: [], current: {items: []}, loa
 				...state,
 				current: action.user
 			}
+
+		case 'CLEAR_CART':
+			return {
+				...state,
+				current: action.user
+			}
 		default:
 			return state
 	}
