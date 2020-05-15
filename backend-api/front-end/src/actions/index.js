@@ -81,11 +81,19 @@ export const loginUser = userId => {
 }
 
 export const addToCart = (userId, itemId) => {
-	console.log(itemId)
 	return dispatch => {
 		dispatch({ type: 'LOADING_USERS'})
-		fetch(`${apiURL}/users/${userId}`, configObj('PATCH', { itemId }))
+		fetch(`${apiURL}/users/${userId}`, configObj('PATCH', { action: 'ADD_ITEM', itemId }))
 		.then(resp => resp.json())
 		.then(user => dispatch({ type: 'CART_ITEM', user}))
+	}
+}
+
+export const buyCart = (userId) => {
+	return dispatch => {
+		dispatch({ type: 'LOADING_USERS'})
+		fetch(`${apiURL}/users/${userId}`, configObj('PATCH', { action: 'EMPTY_CART' }))
+		.then(resp => resp.json())
+		.then(user => dispatch({ type: 'CLEAR_CART', user }))
 	}
 }
