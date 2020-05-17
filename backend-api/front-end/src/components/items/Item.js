@@ -5,7 +5,7 @@ const Item = props => {
 		<div id={'item-' + props.item.id}>
 			<h3>{props.item.name}</h3>
 			<h4>{props.item.store.name}</h4>
-			<sup>{props.item.price}</sup>
+			<sup>${props.item.price}</sup>
 			<p>{props.item.content}</p>
 			<button
 			onClick={event => {
