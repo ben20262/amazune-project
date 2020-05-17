@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchItems, addItem, addToCart } from '../actions/index'
 import Items from '../components/items/Items'
-import ItemInput from '../components/items/ItemInput'
 
 class ItemsContainer extends Component {
 
@@ -13,8 +12,7 @@ class ItemsContainer extends Component {
 	render() {
 		return (
 			<div className='Items-Container'>
-				<h3>Items</h3>
-				<ItemInput addItem={this.props.addItem} storeId={this.props.store_id} />
+				<h2>Items</h2>
 				<Items items={this.props.items} currentUser={this.props.currentUser} addToCart={this.props.addToCart} />
 			</div>
 		)
@@ -23,7 +21,7 @@ class ItemsContainer extends Component {
 
 const mapStateToProps = state => {
 	return {
-		items: state.items,
+		items: state.items.all,
 		currentUser: state.users.current,
 		store_id: 1
 	}
