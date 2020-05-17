@@ -3,12 +3,16 @@ import { buyCart } from '../../actions/index'
 import { connect } from 'react-redux'
  
 class Cart extends Component {
-    render() { 
+    render() {
+		let itemTotal = this.props.items.reduce((acc, value) => {
+			return acc + value.price
+		}, 0)
         return (
-            <div>
+            <div className='Cart-Component'>
 				<ul>
 					{this.props.items.map(item => <li key={item.id}>{item.name} ${item.price}</li>)}
 				</ul>
+				<p>Total: ${itemTotal}</p>
             </div>
         )
     }
