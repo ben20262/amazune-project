@@ -1,6 +1,5 @@
 export default function usersReducer(state = {all: [], current: {items: []}, loading: false}, action) {
 	let item
-	console.log(state, action)
 	switch (action.type) {
 		case 'LOADING_USERS':
 			return {
