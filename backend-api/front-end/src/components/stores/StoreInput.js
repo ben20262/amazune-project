@@ -22,6 +22,7 @@ class StoreInput extends Component {
 	render() {
 		return (
 			<form onSubmit={this.handleSubmit} >
+				<h3>Add Store</h3>
 				<input type='text' name='name' placeholder='Store Name' value={this.state.name} onChange={this.handleChange} />
 				<br />
 				<textarea name='content' placeholder='Store Description' value={this.state.value} onChange={this.handleChange} />
