@@ -33,6 +33,7 @@ class UserInput extends Component {
 				</select>
 				<form onSubmit={this.handleSubmit} >
 					<input type='text' name='name' onChange={this.handleChange} value={this.state.name} />
+					<br />
 					<input type='submit' />
 				</form>
 			</div>
