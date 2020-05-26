@@ -17,7 +17,7 @@ class StoreInput extends Component {
 
 	handleSubmit = event => {
 		event.preventDefault()
-		if (this.state.user_id !== undefined) {
+		if (this.state.user_id) {
 			this.props.addStore(this.state)
 		} else {
 			return <Redirect to={'/'} />
