@@ -27,7 +27,7 @@ export const addItem = (name, content, price, store_id) => {
 		dispatch({type: 'LOADING_ITEMS'})
 		fetch(`${apiURL}/stores/${store_id}/items`, configObj('POST', { name, content, price }))
 		.then(resp => resp.json())
-		.then(item => console.log(item))
+		.then(item => dispatch({ type: 'CREATE_ITEM', item }))
 	}
 }
 
