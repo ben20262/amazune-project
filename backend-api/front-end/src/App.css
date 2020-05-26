@@ -1,3 +1,7 @@
+div.App {
+  margin-left: 2%;
+}
+
 div.Items-Component div {
   background: lightblue;
   width: 50%;
@@ -8,6 +12,32 @@ div.Stores-Component div {
   width: 50%;
 }
 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
 a {
-  color: blue;
+  color: rgb(70, 1, 1);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button, input[type=submit] {
+  background-color: #c8d5ff;
+  color: black;
+  padding: 5px 10px;
+  margin: 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+}
+
+button:hover, input[type=submit]:hover {
+  background-color: #eeeeee;
 }

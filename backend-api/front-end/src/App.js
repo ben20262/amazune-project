@@ -12,7 +12,7 @@ import StoresContainer from './containers/StoresContainer'
 function App() {
 	return (
 		<Router>
-			<div>
+			<div className='App'>
 				<h1>Amazune</h1>
 				<nav>
 					<ul>
