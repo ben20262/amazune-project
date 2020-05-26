@@ -1,10 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Item = props => {
 	return (
 		<div id={'item-' + props.item.id}>
 			<h3>{props.item.name}</h3>
-			<h4>{props.item.store.name}</h4>
+			<h4><Link to={`/stores/${props.item.store_id}`} >{props.item.store.name}</Link></h4>
 			<sup>${props.item.price}</sup>
 			<p>{props.item.content}</p>
 			<button
