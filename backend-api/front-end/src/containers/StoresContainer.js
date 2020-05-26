@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import { fetchStores, fetchItems, addStore } from '../actions/index'
 import StoreInput from '../components/stores/StoreInput'
 import Stores from '../components/stores/Stores'
@@ -18,20 +18,24 @@ class StoresContainer extends Component {
 	}
 
 	render() {
-		return (
-			<div className='Stores-Container' >
-				<h2>Stores</h2>
-				<Route exact path={this.props.match.url} render={() => {
-					return (
-						<div>
-							<StoreInput addStore={this.props.addStore} currentUser={this.props.currentUser} />
-							<Stores stores={this.props.stores} />
-						</div>
-					)
-				}} />
-				<Route path={`${this.props.match.url}/:storeId`} render={routerProps => <Store {...routerProps} stores={this.props.stores.all} />} />
-			</div>
-		)
+		if (this.props.currentUser.id === undefined) {
+			return <Redirect to='/' />
+		} else {
+			return (
+				<div className='Stores-Container' >
+					<h2>Stores</h2>
+					<Route exact path={this.props.match.url} render={() => {
+						return (
+							<div>
+								<StoreInput addStore={this.props.addStore} currentUser={this.props.currentUser} />
+								<Stores stores={this.props.stores} />
+							</div>
+						)
+					}} />
+					<Route path={`${this.props.match.url}/:storeId`} render={routerProps => <Store {...routerProps} stores={this.props.stores.all} />} />
+				</div>
+			)
+		}
 	}
 }
 
