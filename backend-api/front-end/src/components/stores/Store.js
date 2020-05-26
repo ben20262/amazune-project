@@ -9,6 +9,18 @@ import ItemInput from '../items/ItemInput'
 
 class Store extends Component {
 
+	state = {
+		likes: 0
+	}
+
+	handleClick = () => {
+		this.setState(oldState => {
+			return {
+				likes: oldState.likes + 1
+			}
+		})
+	}
+
 	render() {
 		let store
 		if (this.props.store === undefined) {
@@ -31,6 +43,8 @@ class Store extends Component {
 			return (
 				<div>
 					<Link to={`/stores/${store.id}`}><h3>{store.name}</h3></Link>
+					<button onClick={this.handleClick}>Like Store</button>
+					<p>{this.state.likes}</p>
 					<p>{store.content}</p>
 				</div>
 			)
