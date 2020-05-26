@@ -22,7 +22,7 @@ class Store extends Component {
 				<div>
 					<h3>{store.name}</h3>
 					<p>{store.content}</p>
-					<ItemInput addItem={this.props.addItem} storeId={store.id} />
+					<ItemInput addItem={this.props.addItem} store_id={store.id} />
 					<Items items={items} currentUser={this.props.currentUser} addToCart={this.props.addToCart} />
 				</div>
 			)
