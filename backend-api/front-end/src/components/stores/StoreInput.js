@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 
 class StoreInput extends Component {
 
@@ -16,7 +17,12 @@ class StoreInput extends Component {
 
 	handleSubmit = event => {
 		event.preventDefault()
-		this.props.addStore(this.state)
+		if (this.state.user_id !== undefined) {
+			this.props.addStore(this.state)
+		} else {
+			return <Redirect to={'/'} />
+		}
+
 	}
 
 	render() {
