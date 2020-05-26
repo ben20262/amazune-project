@@ -4,7 +4,7 @@ import Store from './Store'
 const Stores = props => {
 
 	return (
-		<div>
+		<div className='Stores-Component'>
 			{props.stores.all.map(store => <Store store={store} key={store.id} />)}
 		</div>
 	)
