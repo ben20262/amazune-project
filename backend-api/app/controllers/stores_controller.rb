@@ -11,7 +11,7 @@ class StoresController < ApplicationController
 	end
 
 	def create
-		store = Store.create(name: params[:name], content: params[:content], user_id: params[:user_id], image: params[:image])
+		store = Store.create(name: params[:name], content: params[:content], user_id: params[:user_id])
 		render json: store
 	end
 
