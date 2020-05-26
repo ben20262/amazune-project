@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 import { fetchItems, addItem, addToCart } from '../actions/index'
 import Items from '../components/items/Items'
 
@@ -10,12 +11,16 @@ class ItemsContainer extends Component {
 	}
 
 	render() {
-		return (
+		if (this.props.currentUser.id === undefined) {
+			return <Redirect to='/' />
+		}
+		else {
+			return (
 			<div className='Items-Container'>
 				<h2>Items</h2>
 				<Items items={this.props.items} currentUser={this.props.currentUser} addToCart={this.props.addToCart} />
 			</div>
-		)
+		)}
 	}
 }
 
