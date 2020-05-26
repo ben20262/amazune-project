@@ -4,6 +4,7 @@ import { BrowserRouter as Router,
 	Switch,
 	Link
 	} from 'react-router-dom'
+import './App.css'
 import UsersContainer from './containers/UsersContainer'
 import ItemsContainer from './containers/ItemsContainer'
 import StoresContainer from './containers/StoresContainer'
@@ -12,6 +13,7 @@ function App() {
 	return (
 		<Router>
 			<div>
+				<h1>Amazune</h1>
 				<nav>
 					<ul>
 						<li>
@@ -27,18 +29,21 @@ function App() {
 				</nav>
 
 				<Switch>
+					<Route exact path='/'>
+						<UsersContainer />
+					</Route>
+					
 					<Route path='/items'>
 						<ItemsContainer />
 					</Route>
+
 					<Route path='/stores' render={routerProps => <StoresContainer {...routerProps} />} />
-					<Route path='/'>
-						<UsersContainer />
-					</Route>
+
 					<Route component={() => <UsersContainer />} />
 				</Switch>
 			</div>
 		</Router>
-	);
+	)
 }
 
 export default App
