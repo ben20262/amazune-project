@@ -33,6 +33,7 @@ export default class ItemInput extends Component {
 				<textarea name='content' value={this.state.content} onChange={this.handleChange} placeholder='Description' />
 				<br />
 				<input type='number' name='price' value={this.state.price} onChange={this.handleChange} placeholder='Price' />
+				<br />
 				<input type='submit' />
 			</form>
 		)
