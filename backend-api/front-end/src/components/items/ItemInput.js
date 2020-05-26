@@ -5,8 +5,7 @@ export default class ItemInput extends Component {
 	state = {
 		name: '',
 		content: '',
-		image: '',
-		price: '.00'
+		price: '0'
 	}
 	
 	handleChange = event => {
@@ -21,8 +20,7 @@ export default class ItemInput extends Component {
 		this.setState({
 			name: '',
 			content: '',
-			image: '',
-			price: '.00'
+			price: '0'
 		})
 	}
 	
@@ -34,9 +32,7 @@ export default class ItemInput extends Component {
 				<br />
 				<textarea name='content' value={this.state.content} onChange={this.handleChange} placeholder='Description' />
 				<br />
-				<input type='text' name='image' value={this.state.image} onChange={this.handleChange} placeholder='Image' />
-				<br />
-				<input type='number' name='price' step='.01' value={this.state.price} onChange={this.handleChange} placeholder='Price' />
+				<input type='number' name='price' value={this.state.price} onChange={this.handleChange} placeholder='Price' />
 				<input type='submit' />
 			</form>
 		)
